@@ -15,11 +15,6 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  
-  <!-- QRCode.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  
-  <!-- Html5Qrcode Library -->
   <script src="https://unpkg.com/html5-qrcode"></script>
 
   <style>
@@ -29,9 +24,6 @@
     }
     .custom-shadow {
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-    }
-    .text-balance {
-      text-wrap: balance;
     }
     @media print {
       .no-print {
@@ -47,7 +39,7 @@
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
   <script>
-    // *** นำ Web App URL ที่ได้จากการ Deploy Google Apps Script PISA มาใส่ลงตรงนี้ ***
+    // *** นำ Web App URL ที่ได้จากการ Deploy Google Apps Script มาใส่ลงตรงนี้ ***
     const BACKEND_URL = "https://script.google.com/macros/s/AKfycbxTsrCq9zuF9zLSCuduIbewNvnMe3Rb0ZNMZGd-w8HFkQ6crB1BSP4bOWNU53f0E_doQA/exec";
   </script>
 
@@ -87,22 +79,22 @@
         <span class="bg-indigo-100 text-indigo-800 text-xs font-black px-6 py-2.5 rounded-full uppercase tracking-widest border border-indigo-200 inline-block shadow-sm shadow-indigo-100">
           <i class="fa-solid fa-lightbulb mr-1.5 text-amber-500"></i> โครงการประเมินทักษะการอ่านวิเคราะห์ขั้นสูง
         </span>
-        <h2 id="home-system-title" class="text-3xl sm:text-4xl md:text-5xl font-black text-indigo-950 tracking-tight leading-snug md:leading-tight text-balance bg-clip-text text-transparent bg-gradient-to-r from-indigo-900 via-violet-800 to-indigo-950">
+        <h2 id="home-system-title" class="text-3xl sm:text-4xl md:text-5xl font-black text-indigo-950 tracking-tight leading-snug md:leading-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-900 via-violet-800 to-indigo-950">
           ประเมินความสามารถการอ่านเชิงวิเคราะห์แนว PISA
         </h2>
-        <p id="home-org-subtitle" class="text-slate-500 text-xs sm:text-sm md:text-base max-w-xl mx-auto leading-relaxed text-balance font-medium">
+        <p id="home-org-subtitle" class="text-slate-500 text-xs sm:text-sm md:text-base max-w-xl mx-auto leading-relaxed font-medium">
           ระบบคัดกรองสมรรถนะการอ่านเพื่อความเข้าใจและคิดอย่างมีวิจารณญาณส่วนบุคคล
         </p>
       </div>
 
       <!-- ส่วนรายงานผู้เข้าสอบสะสม -->
       <div class="grid grid-cols-2 gap-4 max-w-2xl w-full mx-auto text-center">
-        <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-md shadow-indigo-100/40 hover:scale-102 transition duration-300">
+        <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-md shadow-indigo-100/40">
           <div class="bg-indigo-50 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2"><i class="fa-solid fa-calendar-day text-xs"></i></div>
           <p class="text-[9px] md:text-[10px] text-slate-400 font-extrabold uppercase tracking-wide">ทำแบบทดสอบวันนี้</p>
           <h3 id="home-stat-daily" class="text-lg md:text-3xl font-black text-indigo-600 mt-1">-</h3>
         </div>
-        <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-md shadow-indigo-100/40 hover:scale-102 transition duration-300">
+        <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-md shadow-indigo-100/40">
           <div class="bg-violet-50 text-violet-600 w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2"><i class="fa-solid fa-chart-line text-xs"></i></div>
           <p class="text-[9px] md:text-[10px] text-slate-400 font-extrabold uppercase tracking-wide">ยอดประเมินสะสมทั้งหมด</p>
           <h3 id="home-stat-total" class="text-lg md:text-3xl font-black text-violet-600 mt-1">-</h3>
@@ -111,7 +103,7 @@
 
       <div class="w-full max-w-xs mx-auto text-center pt-2">
         <button onclick="startStudentScreen()" class="w-full bg-gradient-to-r from-indigo-600 to-violet-700 hover:from-indigo-700 hover:to-violet-800 text-white font-extrabold py-4 px-6 rounded-2xl transition flex items-center justify-center space-x-3 text-base shadow-xl shadow-indigo-600/20 transform hover:-translate-y-1 duration-200">
-          <i class="fa-solid fa-circle-play text-xl"></i>
+          <i class="fa-solid fa-circle-play text-xl animate-pulse"></i>
           <span>เริ่มแบบทดสอบการอ่านวิเคราะห์</span>
         </button>
       </div>
@@ -179,7 +171,6 @@
         <div class="lg:col-span-8 space-y-6 w-full font-sans">
           <div class="bg-slate-50/50 p-4 rounded-2xl border border-slate-100">
             <h4 class="font-bold text-xs text-indigo-900 uppercase tracking-wider mb-3 flex items-center"><i class="fa-solid fa-chart-line mr-1.5"></i> สรุปพัฒนาการและข้อมูลประวัติการสอบ</h4>
-            <p class="text-xs text-slate-500 mb-2">ตารางจะบันทึกระดับผลการสอบเชิงลึกที่เคยดำเนินการไปแล้วสำหรับผู้เข้าสอบรายนี้</p>
             <div class="h-48 w-full relative">
               <canvas id="studentProgressChart"></canvas>
             </div>
@@ -253,13 +244,13 @@
             <div class="pt-4 border-t border-slate-100 flex justify-between items-center mt-4">
               <button onclick="playTtsSound()" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold py-2 px-3.5 rounded-xl border border-indigo-150 transition flex items-center space-x-1.5">
                 <i class="fa-solid fa-volume-high"></i>
-                <span>ฟังเสียงสัทอักษรตัวช่วยอ่าน</span>
+                <span>ฟังเสียงช่วยอ่านบทความ</span>
               </button>
               <span class="text-[9px] text-slate-400 font-sans">PISA Testing Interface</span>
             </div>
           </div>
 
-          <!-- ฝั่งขวา: คำถามและตัวเลือกตอบ (Question & Choices) -->
+          <!-- ฝั่งขวา: คำถามและตัวเลือกตอบ -->
           <div class="lg:col-span-6 bg-white border border-slate-150 rounded-2xl p-6 shadow-sm flex flex-col justify-between min-h-[380px]">
             <div class="space-y-4">
               <!-- จับเวลานับถอยหลังต่อข้อ -->
@@ -347,7 +338,7 @@
                 -
               </div>
             </div>
-            <p class="text-[10px] text-slate-400 italic">* พัฒนาระบบประมวลวิเคราะห์ให้สอดคล้องกับพฤติกรรมกระบวนการคิดระดับสมอง</p>
+            <p class="text-[10px] text-slate-400 italic">* ประเมินตามหลักกระบวนการทางคิดวิเคราะห์อย่างมีวิจารณญาณ</p>
           </div>
         </div>
 
@@ -425,7 +416,7 @@
             <div class="space-y-2 text-center sm:text-left">
               <span class="bg-indigo-500/30 text-indigo-300 text-[9px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Executive Report</span>
               <h4 class="font-black text-base text-white">รายงานประเมินและคัดกรองฉบับอำนวยการบริหาร</h4>
-              <p class="text-xs text-indigo-200/80">จัดทำโครงสร้างวิเคราะห์ทางสถิติระดับสถาบันการศึกษาเพื่อนำเสนอสพฐ. หรือใช้ประกอบการวางนโยบายการเรียนการสอน</p>
+              <p class="text-xs text-indigo-200/80">จัดทำโครงสร้างวิเคราะห์ทางสถิติระดับสถาบันการศึกษาเพื่อประกอบการส่งต่อเพื่อพัฒนาทางการศึกษา</p>
             </div>
             <button onclick="generateScreeningSummaryReport()" class="bg-white hover:bg-slate-100 text-indigo-950 font-extrabold py-3 px-6 rounded-xl text-xs transition flex items-center justify-center space-x-2 shrink-0">
               <i class="fa-solid fa-file-invoice text-indigo-600"></i>
@@ -534,7 +525,7 @@
             </div>
 
             <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-6 rounded-lg text-xs transition">
-              บันทึกการตั้งค่าการปรับปรุงเกณฑ์
+              บันทึกการตั้งค่าระบบและเกณฑ์
             </button>
           </form>
         </div>
@@ -546,8 +537,7 @@
 
   <footer class="bg-white border-t border-slate-150 py-4 text-center text-[11px] text-slate-400 px-4 no-print">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-medium">
-      <p>© ระบบคัดกรองการอ่านวิเคราะห์แนว PISA - พัฒนาขึ้นโดยอิงมาตรฐานกระบวนการสร้างองค์ความรู้แห่งชาติ</p>
-      <p>ขับเคลื่อนระบบด้วย Google Sheets API & Web Speech API</p>
+      <p>© ระบบคัดกรองการอ่านวิเคราะห์แนว PISA - ประมวลผลร่วมกับ Google Sheets API</p>
     </div>
   </footer>
 
@@ -751,18 +741,9 @@
 
   <div id="print-qrcode-area" class="hidden"></div>
 
-  <!-- SCRIPT LOGIC (ทำงานสมบูรณ์ สถาปัตยกรรมแบบ Clean Code) -->
+  <!-- SCRIPT LOGIC -->
   <script>
     // --- สเตตการทำงานของระบบประเมิน (Core State Management) ---
-    let systemSettings = {
-      SystemName: "ระบบคัดกรองการอ่านเชิงวิเคราะห์แนว PISA",
-      OrgName: "หน่วยงานประเมินกระบวนการอ่านคิดวิเคราะห์",
-      AdminUsername: "admin",
-      AdminPassword: "123",
-      ScoreExcellent: 4, // เต็ม 5 ข้อ
-      ScoreFair: 3
-    };
-
     let currentStudent = null;
     let testQuestions = [];
     let currentQuestionIndex = 0;
@@ -798,21 +779,18 @@
         const payload = { action, ...data };
         const response = await fetch(BACKEND_URL, {
           method: "POST",
-          mode: "no-cors", // เพื่อหลีกเลี่ยง CORS ในขั้นตอนการเซฟภาพบางส่วน 
           headers: { "Content-Type": "text/plain" },
           body: JSON.stringify(payload)
         });
-        
-        // หมายเหตุ: กรณีโหมด no-cors จะไม่สามารถเข้าถึงออบเจกต์ JSON ขากลับได้โดยตรง
-        // หากต้องการดึงผลลัพธ์การคัดกรองแนะนำปรับเปลี่ยนโหมดในขั้นตอน Deploy หลังเว็บแอปตามปกติ
-        return { success: true };
+        const resText = await response.text();
+        return JSON.parse(resText);
       } catch (err) {
         console.error("Network Fetch Request Error:", err);
-        return { success: false, error: err.message };
+        return getMockResponse(action, data);
       }
     }
 
-    // ฟังก์ชันดักจับสำหรับการทดสอบขณะออฟไลน์/ยังไม่ต่อ Apps Script เพื่อความปลอดภัยและเสถียรภาพ
+    // ฟังก์ชันสำหรับกรณีออฟไลน์/ยังไม่ต่อ Apps Script 
     function getMockResponse(action, data) {
       if (action === "getSystemSettings") {
         return systemSettings;
@@ -842,7 +820,7 @@
       return { success: true };
     }
 
-    // --- ระบบควบคุมมุมมองหน้าจอ (View Routing Logic) ---
+    // --- ส่วนควบคุมมุมมองหน้าจอ (View Routing Logic) ---
     function showView(viewId) {
       document.querySelectorAll(".view-section").forEach(sec => sec.classList.add("hidden"));
       const targetSec = document.getElementById("view-" + viewId);
@@ -852,7 +830,6 @@
         stopAllWebcams();
       }
       
-      // ปรับปรุง Navbar แอดมินตามสถานะล็อกอิน
       const loginBtn = document.getElementById("adminLoginBtn");
       const logoutBtn = document.getElementById("adminLogoutBtn");
       if (isAdminLoggedIn) {
@@ -864,13 +841,12 @@
       }
     }
 
-    // เริ่มสกรีนนักเรียน
     function startStudentScreen() {
       showView("scan");
       startQRScannerCamera();
     }
 
-    // --- ระบบตรวจสอบคิวอาร์โค้ด (QR-Code Scanning System) ---
+    // --- ระบบสแกนคิวอาร์โค้ด ---
     async function startQRScannerCamera() {
       const statusEl = document.getElementById("qr-status");
       statusEl.textContent = "กำลังตรวจสอบสัญญาณกล้องเพื่อสแกน...";
@@ -884,18 +860,17 @@
           onScanSuccess,
           onScanFailure
         );
-        statusEl.textContent = "กล้องสแกนทำงานปกติ กรุณาหันรหัสคิวอาร์เข้ามา";
+        statusEl.textContent = "กล้องทำงานปกติ กรุณาหันรหัสคิวอาร์เข้ามา";
         statusEl.className = "text-xs bg-emerald-50 text-emerald-600 py-1 px-3 rounded-full font-semibold";
       } catch (err) {
         console.error("Camera connection error:", err);
-        statusEl.textContent = "ไม่สามารถเข้าถึงกล้องถ่ายภาพได้ กรุณาใช้รหัสนักเรียนจำลองหรืออนุญาตสิทธิ์";
+        statusEl.textContent = "ไม่สามารถเข้าถึงกล้องถ่ายภาพได้ กรุณาป้อนรหัสสอบด้านล่าง";
         statusEl.className = "text-xs bg-rose-50 text-rose-600 py-1 px-3 rounded-full font-semibold";
         
-        // ทางเลือก: หากกล้องใช้งานไม่ได้จริงๆ ให้ล็อกอินคัดกรองผู้ใช้โดยให้ค้นหาข้อมูลรหัสผ่าน Swal Prompt
         setTimeout(async () => {
           const { value: studentId } = await Swal.fire({
             title: 'เชื่อมต่อกล้องไม่ได้',
-            text: 'กรุณากรอกรหัสประจำตัวผู้สอบด้วยตนเองเพื่อดำเนินการต่อ:',
+            text: 'กรุณากรอกรหัสประจำตัวผู้สอบเพื่อดำเนินการต่อ:',
             input: 'text',
             inputPlaceholder: 'กรอกรหัสประจำตัว เช่น 10001',
             showCancelButton: true,
@@ -910,23 +885,18 @@
       }
     }
 
-    function onScanFailure(error) {
-      // สามารถละไว้หรือเปิดคอมเมนต์แจ้งข้อผิดพลาดเป็นระยะ
-    }
+    function onScanFailure(error) {}
 
     function onScanSuccess(decodedText) {
       stopQRScanner();
       
-      // ดึงข้อมูลระเบียนนักเรียน
       let student = localStudents.find(s => s.id === decodedText.trim());
       if (!student) {
-        // หากไม่มีในระเบียน จัดเจนเนอเรตระเบียนชั่วคราวเพื่อให้ระบบทำแบบสอบต่อได้
         student = { id: decodedText.trim(), prefix: "น.ร.", firstName: "ผู้สอบอิสระ", lastName: "รหัส " + decodedText, grade: 3, room: "1" };
       }
       
       currentStudent = student;
       
-      // ปรับปรุงผลโปรไฟล์นักเรียนและเรนเดอร์ชาร์ตประวัติ
       document.getElementById("profile-student-name").textContent = `${student.prefix} ${student.firstName} ${student.lastName}`;
       document.getElementById("profile-student-id").textContent = student.id;
       document.getElementById("profile-student-grade").textContent = "ป." + student.grade;
@@ -953,15 +923,12 @@
       }
     }
 
-    // --- ชาร์ตสถิติและประวัติ (Individual Progress Chart) ---
+    // --- ชาร์ตสถิติรายบุคคล ---
     function renderStudentProgressChart() {
       const ctx = document.getElementById("studentProgressChart").getContext("2d");
       if (studentProgressChartInstance) {
         studentProgressChartInstance.destroy();
       }
-      
-      // ดึงประวัติเก่าจาก local หรือ mock-up
-      const mockHistory = [3, 4, 2, 5]; // ข้อมูลคะแนนย้อนหลัง (เต็ม 5)
       
       studentProgressChartInstance = new Chart(ctx, {
         type: 'line',
@@ -969,7 +936,7 @@
           labels: ['ครั้งที่ 1', 'ครั้งที่ 2', 'ครั้งที่ 3', 'ครั้งที่ 4'],
           datasets: [{
             label: 'คะแนนการอ่านวิเคราะห์ (เต็ม 5)',
-            data: mockHistory,
+            data: [3, 4, 2, 5],
             borderColor: 'rgb(79, 70, 229)',
             backgroundColor: 'rgba(79, 70, 229, 0.1)',
             borderWidth: 2,
@@ -996,33 +963,24 @@
           <td class="p-3 text-center text-emerald-600">80%</td>
           <td class="p-3 text-right"><span class="bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 rounded-full font-bold">ดีเยี่ยม</span></td>
         </tr>
-        <tr class="border-b">
-          <td class="p-3">01/06/2026</td>
-          <td class="p-3 text-center font-bold text-slate-600">3/5</td>
-          <td class="p-3 text-center text-amber-600">60%</td>
-          <td class="p-3 text-right"><span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-0.5 rounded-full font-bold">พอใช้</span></td>
-        </tr>
       `;
     }
 
-    // --- ส่วนคัดกรองวิเคราะห์ข้อสอบ PISA (Interactive Multiple-Choice PISA Engine) ---
+    // --- ระบบสอบ PISA (Exam Stage) ---
     async function startPisaAssessment() {
       Swal.fire({
-        title: 'กำลังจัดเตรียมชุดข้อสอบ',
-        text: 'โปรดกรุณารอสักครู่ ระบบกำลังสุ่มดึงข้อสอบ PISA ที่เหมาะสม...',
+        title: 'กำลังจัดเตรียมข้อสอบ',
+        text: 'โปรดรอกระบวนการดึงข้อสอบ PISA สักครู่...',
         allowOutsideClick: false,
         didOpen: () => { Swal.showLoading(); }
       });
 
-      // เรียกข้อมูลข้อสอบสำหรับระดับชั้นนี้จากหลังบ้าน
       const questions = await apiRequest("getQuestionsForGrade", { grade: currentStudent.grade });
-      
       Swal.close();
 
       if (questions && questions.length > 0) {
         testQuestions = questions;
       } else {
-        // กรณีไม่มีข้อสอบในระบบดึง Mock Up ข้อสอบมาตรฐานของระดับชั้นมาทำทันที
         testQuestions = getMockResponse("getQuestionsForGrade", { grade: currentStudent.grade });
       }
 
@@ -1030,23 +988,20 @@
       currentQuestionResults = [];
       
       showView("test");
-      initTestWebcamStream(); // เริ่มต้นใช้งานเว็บแคมในแบบเงียบ (Background Mode)
+      initTestWebcamStream();
       renderPisaQuestionStage();
     }
 
-    // ปรับปรุงสเปกทรัมการสตรีมภาพเว็บแคมเบื้องหลัง (Silent Webcam Stream Mode)
     async function initTestWebcamStream() {
       const video = document.getElementById('test-video');
       if (!video) return;
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ 
-          video: { width: 320, height: 240 } 
-        });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 320, height: 240 } });
         cameraStream = stream;
         video.srcObject = stream;
-        video.play().catch(e => console.log("Webcam auto-play error in background:", e));
+        video.play().catch(e => console.log("Webcam autoplay error:", e));
       } catch (err) {
-        console.log("Background webcam connection skipped (not authorized or available):", err);
+        console.log("Camera access ignored:", err);
       }
     }
 
@@ -1062,16 +1017,10 @@
       }
     }
 
-    // ถ่ายภาพเงียบๆ แบบไร้สัญญาณขัดจังหวะเพื่อส่งเป็นหลักฐานประกอบสอบ
     function takeSilentSnapshot() {
-      const snapshotProbability = 0.50; // โอกาส 50% ที่จะสุ่มเก็บภาพหลักฐานในขอนั้นๆ
-      if (Math.random() > snapshotProbability) return;
-
       const video = document.getElementById('test-video');
       if (!video || !video.srcObject) return;
-
       setCameraBorderStatus("capturing");
-
       try {
         const canvas = document.createElement('canvas');
         canvas.width = 320;
@@ -1079,7 +1028,6 @@
         const ctx = canvas.getContext('2d');
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         capturedVerificationBase64 = canvas.toDataURL('image/jpeg', 0.6);
-        console.log("Silent randomized snapshot taken in background.");
       } catch (e) {
         console.log("Silent capture failed:", e);
       } finally {
@@ -1087,29 +1035,20 @@
       }
     }
 
-    // เรนเดอร์โจทย์และตัวเลือกแบบแยกสัดส่วน (Passage | Question Details)
     function renderPisaQuestionStage() {
       if (currentQuestionIndex >= testQuestions.length) {
         finishAndEvaluateTest();
         return;
       }
 
-      // รีเซ็ตการสุ่มเก็บภาพพยาน
       capturedVerificationBase64 = null;
-
-      // รายงานสถานะความคืบหน้าด้านบน
       document.getElementById("test-progress-text").textContent = `คำถามที่ ${currentQuestionIndex + 1} จาก ${testQuestions.length}`;
       document.getElementById("test-progress-bar").style.width = `${((currentQuestionIndex + 1) / testQuestions.length) * 100}%`;
 
       const q = testQuestions[currentQuestionIndex];
-
-      // แสดงฝั่งซ้าย: บทความ Passage
       document.getElementById("target-passage-display").textContent = q.passage;
-
-      // แสดงฝั่งขวา: คำถาม Question
       document.getElementById("target-question-display").textContent = q.question;
 
-      // แสดงฝั่งขวา: ตัวเลือกตอบ 4 ข้อ
       const choicesContainer = document.getElementById("pisa-choices-container");
       choicesContainer.innerHTML = "";
       
@@ -1117,28 +1056,19 @@
         const btn = document.createElement("button");
         btn.onclick = () => selectChoiceAnswer(idx);
         btn.className = "w-full text-left p-3.5 border border-slate-200 rounded-xl hover:bg-indigo-50 hover:border-indigo-400 text-xs sm:text-sm font-semibold text-slate-700 transition flex items-start space-x-3";
-        
-        // ตัวอักษรกำกับตัวเลือก
-        const badge = document.createElement("span");
-        badge.className = "bg-slate-100 text-slate-600 font-extrabold px-2.5 py-0.5 rounded-lg border";
-        badge.textContent = String.fromCharCode(65 + idx); // A, B, C, D
-        
-        const label = document.createElement("span");
-        label.className = "flex-grow pt-0.5";
-        label.textContent = choice;
-
-        btn.appendChild(badge);
-        btn.appendChild(label);
+        btn.innerHTML = `
+          <span class="bg-slate-100 text-slate-600 font-extrabold px-2.5 py-0.5 rounded-lg border">${String.fromCharCode(65 + idx)}</span>
+          <span class="flex-grow pt-0.5">${choice}</span>
+        `;
         choicesContainer.appendChild(btn);
       });
 
-      // จัดการตัวจับเวลา
       startQuestionTimer();
     }
 
     function startQuestionTimer() {
       if (countdownTimer) clearInterval(countdownTimer);
-      timeRemainingForQuestion = 60; // จำกัด 60 วินาทีต่อข้อ
+      timeRemainingForQuestion = 60;
       
       const timerText = document.getElementById("word-timer-text");
       const timerBar = document.getElementById("word-timer-bar");
@@ -1148,14 +1078,6 @@
         timerText.textContent = `${timeRemainingForQuestion} วินาที`;
         timerBar.style.width = `${(timeRemainingForQuestion / 60) * 100}%`;
 
-        if (timeRemainingForQuestion <= 10) {
-          timerText.className = "text-rose-600 animate-pulse";
-          timerBar.className = "bg-rose-500 h-1.5 rounded-full transition-all duration-1000";
-        } else {
-          timerText.className = "text-amber-500";
-          timerBar.className = "bg-gradient-to-r from-indigo-500 to-rose-500 h-1.5 rounded-full transition-all duration-1000";
-        }
-
         if (timeRemainingForQuestion <= 0) {
           clearInterval(countdownTimer);
           handleQuestionTimeout();
@@ -1163,18 +1085,15 @@
       }, 1000);
     }
 
-    // การตอบคำถามและการบันทึกผล (Answer Verification & Result Logging)
     function selectChoiceAnswer(choiceIndex) {
       clearInterval(countdownTimer);
-      takeSilentSnapshot(); // ดำเนินการสุ่มสตรีมเก็บรูปผู้เข้าสอบไว้ในพื้นหลัง
+      takeSilentSnapshot();
 
       const q = testQuestions[currentQuestionIndex];
       const isCorrect = (choiceIndex === q.correctIndex);
 
-      // เล่นเสียงบี๊บเชิงสัญลักษณ์สร้างบรรยากาศกระตุ้นความมั่นใจ
       playSynthesizedBeep(isCorrect ? 880 : 220, 0.15);
 
-      // บันทึกผลลัพธ์ย่อยขอนี้
       currentQuestionResults.push({
         questionId: q.id,
         passage: q.passage,
@@ -1185,7 +1104,6 @@
         choices: q.choices
       });
 
-      // ส่งประวัติย่อยขอนี้ไปยัง Apps Script หลังบ้าน (ไม่กวนผลสรุปรวม)
       apiRequest("saveQuestionResult", {
         record: {
           studentId: currentStudent.id,
@@ -1197,23 +1115,20 @@
         }
       });
 
-      // ไปยังข้อสอบข้อถัดไป
       currentQuestionIndex++;
       setTimeout(renderPisaQuestionStage, 300);
     }
 
     function handleQuestionTimeout() {
-      // หมดเวลาประมวลเป็นผิดและข้ามไปยังข้อถัดไปทันที
       currentQuestionResults.push({
         questionId: testQuestions[currentQuestionIndex].id,
         passage: testQuestions[currentQuestionIndex].passage,
         question: testQuestions[currentQuestionIndex].question,
-        selectedChoice: "หมดเวลาทำข้อสอบ",
+        selectedChoice: "หมดเวลา",
         isCorrect: false,
         correctIndex: testQuestions[currentQuestionIndex].correctIndex,
         choices: testQuestions[currentQuestionIndex].choices
       });
-
       currentQuestionIndex++;
       renderPisaQuestionStage();
     }
@@ -1229,16 +1144,13 @@
         correctIndex: testQuestions[currentQuestionIndex].correctIndex,
         choices: testQuestions[currentQuestionIndex].choices
       });
-
       currentQuestionIndex++;
       renderPisaQuestionStage();
     }
 
-    // เสียงบี๊บตอบสนองความเร็วสูง
     function playSynthesizedBeep(freq, duration) {
       try {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContext) return;
         const ctx = new AudioContext();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
@@ -1250,12 +1162,9 @@
         gain.connect(ctx.destination);
         osc.start();
         osc.stop(ctx.currentTime + duration);
-      } catch (e) {
-        console.log("Synthesized sound ignored:", e);
-      }
+      } catch (e) {}
     }
 
-    // ฟังก์ชันเสียงจำลองนำอ่าน (TTS) เพื่อช่วยเหลือสำหรับเด็ก
     function playTtsSound() {
       const q = testQuestions[currentQuestionIndex];
       if (!q || !q.passage) return;
@@ -1263,20 +1172,16 @@
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(q.passage);
         utterance.lang = "th-TH";
-        utterance.rate = 1.0;
         window.speechSynthesis.speak(utterance);
-      } catch (e) {
-        console.log("TTS play support error:", e);
-      }
+      } catch (e) {}
     }
 
-    // --- ส่วนประมวลวิเคราะห์สัมฤทธิผลสอบการอ่านวิเคราะห์ (Evaluation Phase) ---
+    // --- ส่วนประเมินรายงานผล ---
     async function finishAndEvaluateTest() {
       stopAllWebcams();
-      
       Swal.fire({
         title: 'กำลังส่งข้อมูลบันทึกผล',
-        text: 'ระบบกำลังประมวลวินิจฉัยคะแนนและบันทึกหลักฐาน...',
+        text: 'ระบบกำลังประมวลวินิจฉัยคะแนนสะสม...',
         allowOutsideClick: false,
         didOpen: () => { Swal.showLoading(); }
       });
@@ -1286,17 +1191,16 @@
       const percent = Math.round((correctAnswers / totalQuestions) * 100);
       
       let level = "ควรปรับปรุง";
-      let suggestion = "ควรเสริมแบบฝึกคิดวิเคราะห์และจัดกระบวนการอ่านจับใจความเร่งด่วน";
+      let suggestion = "ควรส่งเสริมแบบฝึกการอ่านวิเคราะห์ใจความสำคัญอย่างเร่งด่วน";
 
       if (correctAnswers >= systemSettings.ScoreExcellent) {
         level = "ดีเยี่ยม";
-        suggestion = "มีทักษะการสืบเสาะหาข้อเท็จจริงสูงมาก สามารถเชื่อมโยงข้อมูลเหตุและผลได้เป็นอย่างดี";
+        suggestion = "มีสมรรถนะการวิเคราะห์เชื่อมโยงและคิดอย่างมีวิจารณญาณในเกณฑ์ดีเยี่ยม";
       } else if (correctAnswers >= systemSettings.ScoreFair) {
         level = "พอใช้";
-        suggestion = "ความพร้อมการอ่านอยู่ในเกณฑ์พอใช้ มีจุดบกพร่องเรื่องการเปรียบเทียบและการอนุมานเชิงนัยยะบางส่วน";
+        suggestion = "ความเข้าใจมีแนวโน้มที่ดี ควรฝึกการหาเหตุผลเชื่อมโยงเพิ่มเติม";
       }
 
-      // เตรียมออบเจกต์เพื่อสรุปส่งข้อมูลหลังบ้าน
       const summaryPayload = {
         studentId: currentStudent.id,
         name: `${currentStudent.prefix} ${currentStudent.firstName} ${currentStudent.lastName}`,
@@ -1307,42 +1211,38 @@
         level: level
       };
 
-      // บันทึกไปยังระบบ Apps Script
-      const serverResult = await apiRequest("saveSummaryResult", {
+      await apiRequest("saveSummaryResult", {
         summary: summaryPayload,
-        base64Image: capturedVerificationBase64 // หากถูกสุ่มบันทึกภาพ จะส่งแนบขึ้นฐานข้อมูล Drive คอนเฟิร์มทันที
+        base64Image: capturedVerificationBase64
       });
 
       Swal.close();
 
-      // แสดงและอัปเดตวิวรายงานผล
       document.getElementById("result-student-name").textContent = summaryPayload.name;
       document.getElementById("result-student-grade").textContent = currentStudent.grade;
-      document.getElementById("result-datetime").textContent = new Date().toLocaleDateString('th-TH', { hour: '2-digit', minute: '2-digit' });
+      document.getElementById("result-datetime").textContent = new Date().toLocaleDateString('th-TH');
       document.getElementById("result-score-raw").textContent = correctAnswers;
       document.getElementById("result-score-percent").textContent = percent;
       document.getElementById("result-score-level").textContent = level;
       document.getElementById("result-score-suggestion").textContent = suggestion;
 
-      // จัดเจนเนอเรตคำวิจารณ์วิเคราะห์ลึกจำแนกผลการสอบรายข้อ
       let diagnosticHtml = "";
       currentQuestionResults.forEach((res, i) => {
         diagnosticHtml += `
-          <div class="p-3 bg-white border rounded-xl space-y-1">
+          <div class="p-3 bg-white border rounded-xl space-y-1 text-left">
             <p class="font-semibold text-slate-800 text-xs">ข้อที่ ${i+1}: ${res.question}</p>
             <p class="text-[11px] ${res.isCorrect ? 'text-emerald-600' : 'text-rose-500'}">
-              คำตอบของคุณ: ${res.selectedChoice} ${res.isCorrect ? '(✓ ถูกต้อง)' : `(✗ ผิด | เฉลยที่ถูกต้อง: ${res.choices[res.correctIndex]})`}
+              คำตอบของคุณ: ${res.selectedChoice} ${res.isCorrect ? '(✓ ถูกต้อง)' : `(✗ ผิด | เฉลย: ${res.choices[res.correctIndex]})`}
             </p>
           </div>
         `;
       });
-      document.getElementById("diagnostic-feedback-text").innerHTML = diagnosticHtml || "ไม่พบรายงานข้อวินิจฉัย";
+      document.getElementById("diagnostic-feedback-text").innerHTML = diagnosticHtml;
 
-      // อัปเกรดผลสรุปในวิวบอร์ด
       showView("result");
     }
 
-    // --- ส่วนบริหารแอดมินสำหรับผู้บริหารและคุณครู (Admin Control Center) ---
+    // --- ส่วนงานหลังบ้านครู (Admin Control) ---
     function openAdminModal() {
       document.getElementById("admin-login-modal").classList.remove("hidden");
     }
@@ -1358,30 +1258,16 @@
       if (user === systemSettings.AdminUsername && pass === systemSettings.AdminPassword) {
         isAdminLoggedIn = true;
         closeAdminModal();
-        Swal.fire({
-          icon: 'success',
-          title: 'เข้าสู่แผงควบคุมสำเร็จ',
-          text: 'ยินดีต้อนรับเข้าใช้ระบบจัดการคลังแบบทดสอบอ่านวิเคราะห์ PISA',
-          timer: 1500,
-          showConfirmButton: false
-        });
+        Swal.fire({ icon: 'success', title: 'ล็อกอินแอดมินครูสำเร็จ', timer: 1500, showConfirmButton: false });
         loadAdminDashboard();
       } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'รหัสเข้าไม่ถูกต้อง',
-          text: 'กรุณาตรวจสอบชื่อผู้ใช้งานและรหัสผ่านความปลอดภัยอีกครั้ง'
-        });
+        Swal.fire({ icon: 'error', title: 'ข้อมูลไม่ถูกต้อง' });
       }
     }
 
     function logoutAdmin() {
       isAdminLoggedIn = false;
       showView("home");
-      Swal.fire({
-        icon: 'info',
-        title: 'ออกจากแผงควบคุมหลักเรียบร้อย'
-      });
     }
 
     function loadAdminDashboard() {
@@ -1391,15 +1277,8 @@
 
     function switchAdminTab(tabName) {
       document.querySelectorAll(".admin-tab-content").forEach(el => el.classList.add("hidden"));
-      document.querySelectorAll(".admin-tab-btn").forEach(btn => {
-        btn.className = "admin-tab-btn bg-slate-100 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-bold py-2 px-3.5 rounded-lg";
-      });
-
       const activeContent = document.getElementById("admin-tab-" + tabName);
       if (activeContent) activeContent.classList.remove("hidden");
-
-      // ค้นหาเป้าปุ่มเพื่อปรับสี Active
-      event?.target?.classList?.add("bg-indigo-600", "text-white");
 
       if (tabName === "stats") {
         renderAdminStatsTab();
@@ -1412,51 +1291,39 @@
       }
     }
 
-    // --- ส่วนแดชบอร์ดข้อมูลสถิติประมวลผล (Dashboard Analytics Section) ---
     async function renderAdminStatsTab() {
       const rawData = await apiRequest("getDashboardStatistics");
       lastFetchedStats = rawData;
 
-      // จัดดึงยอดสรุปสะสมมาแสดงหน้าบ้านหลัก
       document.getElementById("home-stat-daily").textContent = lastFetchedStats?.totalAssessments || "0";
       document.getElementById("home-stat-total").textContent = lastFetchedStats?.totalStudents || "0";
 
-      // คุมค่าสถิติแดชบอร์ดหลังบ้าน
       document.getElementById("stats-total-assessments").textContent = (lastFetchedStats?.totalAssessments || "0") + " ครั้ง";
       document.getElementById("stats-passed").textContent = (lastFetchedStats?.passedCount || "0") + " คน";
       document.getElementById("stats-improvement").textContent = (lastFetchedStats?.improvementCount || "0") + " คน";
 
-      // ดำเนินการเรนเดอร์ Chart.js
       renderCharts(lastFetchedStats);
     }
 
     function renderCharts(stats) {
-      // 1. ชาร์ตคะแนนเฉลี่ยจำแนกชั้นเรียน (Bar Chart)
       const ctxGrade = document.getElementById("gradeStatsChart").getContext("2d");
       if (gradeStatsChartInstance) gradeStatsChartInstance.destroy();
       
-      const gradeLabels = ["ป.1", "ป.2", "ป.3", "ป.4", "ป.5", "ป.6"];
       const gradeAverages = [0, 0, 0, 0, 0, 0];
-      
       if (stats?.gradeStats) {
         Object.keys(stats.gradeStats).forEach(gr => {
-          const gIndex = parseInt(gr) - 1;
-          if (gIndex >= 0 && gIndex < 6) {
-            const dataObj = stats.gradeStats[gr];
-            gradeAverages[gIndex] = (dataObj.sumScore / dataObj.total).toFixed(2);
+          const idx = parseInt(gr) - 1;
+          if (idx >= 0 && idx < 6) {
+            const d = stats.gradeStats[gr];
+            gradeAverages[idx] = (d.sumScore / d.total).toFixed(2);
           }
         });
-      } else {
-        // Mock averages if empty
-        gradeAverages[2] = 4.2; 
-        gradeAverages[3] = 3.8;
-        gradeAverages[4] = 2.5;
       }
 
       gradeStatsChartInstance = new Chart(ctxGrade, {
         type: 'bar',
         data: {
-          labels: gradeLabels,
+          labels: ["ป.1", "ป.2", "ป.3", "ป.4", "ป.5", "ป.6"],
           datasets: [{
             label: 'คะแนนเฉลี่ยการทดสอบ (เต็ม 5 คะแนน)',
             data: gradeAverages,
@@ -1473,47 +1340,35 @@
         }
       });
 
-      // 2. ชาร์ตสัดส่วนกลุ่มคุณภาพการอ่าน (Pie/Doughnut Chart)
       const ctxRatio = document.getElementById("ratioChart").getContext("2d");
       if (ratioChartInstance) ratioChartInstance.destroy();
-
-      const passed = stats?.passedCount || 8;
-      const improvement = stats?.improvementCount || 4;
 
       ratioChartInstance = new Chart(ctxRatio, {
         type: 'doughnut',
         data: {
-          labels: ['ผ่านเกณฑ์ดีเยี่ยม/พอใช้', 'ต้องปรับปรุง'],
+          labels: ['ผ่านเกณฑ์', 'ต้องปรับปรุง'],
           datasets: [{
-            data: [passed, improvement],
-            backgroundColor: ['#10b981', '#f43f5e'],
-            borderWidth: 1
+            data: [stats?.passedCount || 1, stats?.improvementCount || 1],
+            backgroundColor: ['#10b981', '#f43f5e']
           }]
         },
         options: {
           responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { position: 'bottom' } }
+          maintainAspectRatio: false
         }
       });
     }
 
-    // --- ส่วนสืบค้นคลังข้อสอบ PISA (Word/Question CRUD Tab) ---
     async function renderAdminWordsTab() {
       const tbody = document.getElementById("questions-table-body");
       tbody.innerHTML = `<tr><td colspan="6" class="p-3 text-center text-slate-400">กำลังโหลดคำถามโจทย์สอบ...</td></tr>`;
 
       const questionsList = await apiRequest("getAllQuestions");
-      let listToRender = questionsList && questionsList.length > 0 ? questionsList : [
-        // ชุดจำลองดั้งเดิมเผื่อยังไม่ต่อ GAS
-        { id: "1", grade: "3", passage: "มดแดงชอบสร้างรังอยู่บนต้นไม้ใหญ่ร่วมกันเป็นกลุ่ม โดยใช้ใบไม้มาถักทอเข้าด้วยกันอย่างเหนียวแน่นเพื่อความปลอดภัยของสมาชิกในรัง", question: "มดแดงมักจะสร้างรังของพวกมันไว้ที่ใด?", choices: ["บนพื้นดินชื้นแฉะ", "บนกิ่งไม้และต้นไม้ใหญ่", "ใต้ก้อนหินหนาทึบ", "ในโพรงดินลึก"], correctIndex: 1 },
-        { id: "2", grade: "4", passage: "ต้นกระบองเพชรสามารถเจริญเติบโตได้ดีในทะเลทรายที่แห้งแล้ง โดยใบของมันจะลดรูปไปเป็นหนามแหลมเพื่อป้องกันการสูญเสียน้ำและเก็บสะสมน้ำไว้ในลำต้นที่อวบน้ำ", question: "เพราะเหตุใดต้นกระบองเพชรจึงเปลี่ยนใบให้กลายเป็นหนาม?", choices: ["เพื่อล่อแมลงให้มาช่วยผสมเกสร", "เพื่อความสวยงามตามธรรมชาติ", "เพื่อป้องกันตนเองจากการโดนแดดเผา", "เพื่อลดการระเหยสูญเสียน้ำ"], correctIndex: 3 }
-      ];
-
       tbody.innerHTML = "";
-      listToRender.forEach(q => {
+      
+      questionsList.forEach(q => {
         const tr = document.createElement("tr");
-        tr.className = "border-b hover:bg-slate-50/50";
+        tr.className = "border-b hover:bg-slate-50";
         tr.innerHTML = `
           <td class="p-3 font-semibold text-slate-600">${q.id}</td>
           <td class="p-3 font-extrabold text-indigo-950">ป.${q.grade}</td>
@@ -1557,7 +1412,6 @@
 
     async function handleQuestionSubmit(event) {
       event.preventDefault();
-      
       const qObj = {
         id: document.getElementById("form-question-id").value,
         grade: document.getElementById("form-question-grade").value,
@@ -1572,39 +1426,27 @@
         correctIndex: parseInt(document.getElementById("form-question-correct").value)
       };
 
-      Swal.fire({ title: 'กำลังบันทึกข้อมูลโจทย์ข้อสอบ...', didOpen: () => { Swal.showLoading(); } });
-      
-      const res = await apiRequest("saveQuestion", { wordObj: qObj });
-      
-      Swal.close();
+      await apiRequest("saveQuestion", { wordObj: qObj });
       closeQuestionModal();
-      
-      Swal.fire({ icon: 'success', title: 'จัดเก็บสำเร็จ', text: 'โจทย์ข้อสอบถูกปรับปรุงในฐานข้อมูลแล้ว', timer: 1500 });
+      Swal.fire({ icon: 'success', title: 'จัดเก็บสำเร็จ', timer: 1500 });
       renderAdminWordsTab();
     }
 
     async function confirmDeleteQuestion(id) {
       const confirm = await Swal.fire({
         title: 'ยืนยันลบโจทย์คำถามนี้?',
-        text: 'กระบวนการนี้จะลบข้อสอบออกจากคลังและไม่สามารถย้อนคืนค่าได้',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#f43f5e',
-        cancelButtonColor: '#94a3b8',
-        confirmButtonText: 'ใช่, ฉันต้องการลบข้อสอบนี้',
-        cancelButtonText: 'ยกเลิก'
+        confirmButtonColor: '#f43f5e'
       });
 
       if (confirm.isConfirmed) {
-        Swal.fire({ title: 'กำลังลบคำถาม...', didOpen: () => { Swal.showLoading(); } });
         await apiRequest("deleteQuestion", { id: id });
-        Swal.close();
-        Swal.fire('ดำเนินการเรียบร้อย!', 'ลบข้อสอบออกจากระบบเสร็จสิ้น', 'success');
+        Swal.fire('ดำเนินการเรียบร้อย!', '', 'success');
         renderAdminWordsTab();
       }
     }
 
-    // --- ส่วนการนำเข้าและส่งออก Excel คลังข้อสอบ (Excel IO Suite) ---
     function triggerExcelImport() {
       document.getElementById("excel-import-input").click();
     }
@@ -1612,8 +1454,6 @@
     function importQuestionsFromExcel(event) {
       const file = event.target.files[0];
       if (!file) return;
-
-      Swal.fire({ title: 'กำลังดึงข้อมูลพาร์สไฟล์ Excel...', didOpen: () => { Swal.showLoading(); } });
 
       const reader = new FileReader();
       reader.onload = async (e) => {
@@ -1624,11 +1464,10 @@
           const sheet = workbook.Sheets[firstSheetName];
           const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
-          // ตรวจจับพาร์สแถวข้อมูล (ข้ามแถวหัวตาราง)
           let importCount = 0;
           for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
-            if (row.length < 8) continue; // ข้ามแถวที่ไม่สมบูรณ์
+            if (row.length < 8) continue;
 
             const qObj = {
               grade: row[0],
@@ -1642,10 +1481,10 @@
             importCount++;
           }
 
-          Swal.fire('นำเข้าสำเร็จ!', `อัปโหลดโจทย์ข้อสอบจำนวน ${importCount} ข้อเข้าระบบแล้ว`, 'success');
+          Swal.fire('นำเข้าสำเร็จ!', `อัปโหลดจำนวน ${importCount} ข้อความสอบแล้ว`, 'success');
           renderAdminWordsTab();
         } catch (err) {
-          Swal.fire('เกิดข้อผิดพลาด', 'พาร์สไฟล์ไม่ถูกต้อง กรุณาอิงตามลำดับโครงสร้างที่กำหนด', 'error');
+          Swal.fire('เกิดข้อผิดพลาด', 'รูปแบบไฟล์ไม่ถูกต้อง', 'error');
         }
       };
       reader.readAsArrayBuffer(file);
@@ -1653,14 +1492,7 @@
 
     async function exportQuestionsToExcel() {
       const questionsList = await apiRequest("getAllQuestions");
-      if (!questionsList || questionsList.length === 0) {
-        Swal.fire('ไม่พบข้อสอบ', 'ระบบไม่มีรายการคำถามที่สามารถส่งออกได้ในขณะนี้', 'info');
-        return;
-      }
-
-      const excelRows = [
-        ["Grade", "Passage", "Question", "Choice1", "Choice2", "Choice3", "Choice4", "CorrectIndex"]
-      ];
+      const excelRows = [["Grade", "Passage", "Question", "Choice1", "Choice2", "Choice3", "Choice4", "CorrectIndex"]];
 
       questionsList.forEach(q => {
         excelRows.push([
@@ -1676,7 +1508,6 @@
       XLSX.writeFile(workbook, "pisa_questions_export.xlsx");
     }
 
-    // --- ส่วนงานจัดทะเบียนคิวอาร์สอบเดี่ยวและรวม (Student & QR Code Logic) ---
     function renderAdminStudentsTab() {
       const tbody = document.getElementById("students-table-body");
       tbody.innerHTML = "";
@@ -1720,31 +1551,24 @@
 
       localStudents.push(newSt);
       localStorage.setItem('pisa_students', JSON.stringify(localStudents));
-
       closeStudentModal();
-      Swal.fire({ icon: 'success', title: 'ลงระเบียนสำเร็จ', text: 'เพิ่มรายชื่อนักเรียนในฐานข้อมูลโรงเรียนเรียบร้อย', timer: 1500 });
       renderAdminStudentsTab();
     }
 
     function confirmDeleteStudent(id) {
       Swal.fire({
         title: 'ยืนยันลบระเบียน?',
-        text: 'นักเรียนคนนี้จะถูกถอนการยืนยันสิทธิ์จากฐานระบบหน้าบ้าน',
         icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#f43f5e',
-        confirmButtonText: 'ตกลง, ลบข้อมูล'
+        showCancelButton: true
       }).then((result) => {
         if (result.isConfirmed) {
           localStudents = localStudents.filter(s => s.id !== id);
           localStorage.setItem('pisa_students', JSON.stringify(localStudents));
-          Swal.fire('ดำเนินการสำเร็จ', 'ลบนักเรียนเรียบร้อย', 'success');
           renderAdminStudentsTab();
         }
       });
     }
 
-    // สร้างลิงก์สำหรับการแสดง QR สำหรับนักเรียน
     function generateQRUrl(studentId) {
       return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(studentId)}`;
     }
@@ -1760,13 +1584,12 @@
         </head>
         <body class="bg-white flex items-center justify-center p-8">
           <div class="border-2 border-dashed border-indigo-300 p-6 rounded-2xl text-center space-y-4 max-w-xs shadow-md">
-            <h2 class="text-xs font-black text-indigo-900 uppercase">บัตรประเมินคัดกรองการอ่านวิเคราะห์ (PISA)</h2>
+            <h2 class="text-xs font-black text-indigo-900 uppercase">บัตรประเมินการอ่านวิเคราะห์ (PISA)</h2>
             <div class="inline-block p-2 border bg-white"><img src="${qrUrl}"></div>
             <div>
               <p class="font-extrabold text-sm text-slate-800">${name}</p>
               <p class="text-xs text-slate-400">รหัสสอบ: ${studentId} | ชั้น: ${classRoom}</p>
             </div>
-            <p class="text-[9px] text-slate-400 font-mono">กรุณาแสดงบัตรนี้ต่อกล้องสอบสแกนยืนยันสิทธิ์</p>
           </div>
         </body>
         </html>
@@ -1780,7 +1603,7 @@
       printWin.document.write(`
         <html>
         <head>
-          <title>ชุดบัตรสอบคิวอาร์โรงเรียนรวม</title>
+          <title>คิวอาร์บอร์ดนักเรียนรวม</title>
           <script src="https://cdn.tailwindcss.com"></script>
         </head>
         <body class="bg-white p-6 grid grid-cols-2 gap-4">
@@ -1789,11 +1612,11 @@
       localStudents.forEach(st => {
         const qrUrl = generateQRUrl(st.id);
         printWin.document.write(`
-          <div class="border-2 border-dashed border-slate-300 p-4 rounded-xl text-center space-y-2">
+          <div class="border-2 border-dashed border-slate-300 p-4 rounded-xl text-center">
             <h2 class="text-[10px] font-black text-slate-700">บัตรสอบ PISA การอ่านคิดวิเคราะห์</h2>
-            <div class="inline-block p-1 border"><img class="w-24 h-24" src="${qrUrl}"></div>
+            <div class="inline-block p-1 border my-2"><img class="w-24 h-24" src="${qrUrl}"></div>
             <p class="font-bold text-xs text-slate-800">${st.prefix} ${st.firstName} ${st.lastName}</p>
-            <p class="text-[10px] text-slate-400">รหัสประจำตัว: ${st.id} | ชั้น ป.${st.grade}/${st.room}</p>
+            <p class="text-[10px] text-slate-400">ป.${st.grade}/${st.room}</p>
           </div>
         `);
       });
@@ -1803,7 +1626,6 @@
       setTimeout(() => { printWin.print(); }, 500);
     }
 
-    // --- ส่วนจัดทำระบบตั้งค่าความปลอดภัย (Settings Management Suite) ---
     function renderAdminSettingsTab() {
       document.getElementById("setting-SystemName").value = systemSettings.SystemName;
       document.getElementById("setting-OrgName").value = systemSettings.OrgName;
@@ -1813,20 +1635,14 @@
 
     async function handleSettingsSave(event) {
       event.preventDefault();
-      
       systemSettings.SystemName = document.getElementById("setting-SystemName").value.trim();
       systemSettings.OrgName = document.getElementById("setting-OrgName").value.trim();
       systemSettings.AdminUsername = document.getElementById("setting-AdminUsername").value.trim();
       systemSettings.AdminPassword = document.getElementById("setting-AdminPassword").value.trim();
 
-      Swal.fire({ title: 'กำลังปรับใช้เกณฑ์ระบบ...', didOpen: () => { Swal.showLoading(); } });
-
       await apiRequest("saveSettings", { settings: systemSettings });
-
-      Swal.close();
-      
       applyDynamicTexts();
-      Swal.fire('จัดเก็บการตั้งค่าสำเร็จ', 'ข้อมูลระบบคัดกรองหลักทางวิเคราะห์ถูกอัปเดตแล้ว', 'success');
+      Swal.fire('จัดเก็บการตั้งค่าสำเร็จ', '', 'success');
       loadAdminDashboard();
     }
 
@@ -1838,22 +1654,19 @@
       document.getElementById("home-org-subtitle").textContent = systemSettings.OrgName;
     }
 
-    // --- ส่วนจัดทำรายงานฉบับอำนวยการบริหาร (Executive Report Suite) ---
     function generateScreeningSummaryReport() {
       document.getElementById("report-title-system").textContent = systemSettings.SystemName;
       document.getElementById("report-title-org").textContent = systemSettings.OrgName;
-      document.getElementById("report-date-run").textContent = new Date().toLocaleDateString('th-TH', { year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById("report-date-run").textContent = new Date().toLocaleDateString('th-TH');
 
-      // ดึงสถิติจริง
-      const passed = lastFetchedStats?.passedCount || 8;
-      const improvement = lastFetchedStats?.improvementCount || 4;
-      const total = lastFetchedStats?.totalAssessments || 12;
+      const passed = lastFetchedStats?.passedCount || 1;
+      const improvement = lastFetchedStats?.improvementCount || 1;
+      const total = lastFetchedStats?.totalAssessments || 2;
 
       document.getElementById("report-total-screened").textContent = total + " ครั้ง";
       document.getElementById("report-passed").textContent = passed + " คน";
       document.getElementById("report-needs-work").textContent = improvement + " คน";
 
-      // เรนเดอร์ตารางสถิติสรุปความสัมฤทธิ์คัดกรองแนว PISA ของโรงเรียนรายปี
       const tbody = document.getElementById("report-table-body");
       tbody.innerHTML = "";
 
@@ -1872,8 +1685,6 @@
           const sObj = lastFetchedStats.gradeStats[i];
           gradeTotal = sObj.total;
           gradeAvg = (sObj.sumScore / sObj.total).toFixed(1);
-          
-          // สรุปสัดส่วนจำลองสำหรับแถวรายงานแบบสถิติ
           gradePassed = Math.round(gradeTotal * 0.7);
           gradeNeeds = gradeTotal - gradePassed;
           passPercent = `${Math.round((gradePassed / gradeTotal) * 100)}%`;
@@ -1900,6 +1711,15 @@
     function printReportModal() {
       window.print();
     }
+
+    // โหลดฐานระบบเริ่มต้น
+    document.addEventListener("DOMContentLoaded", async () => {
+      const settings = await apiRequest("getSystemSettings");
+      if (settings && settings.SystemName) {
+        systemSettings = settings;
+      }
+      applyDynamicTexts();
+    });
   </script>
 </body>
 </html>
